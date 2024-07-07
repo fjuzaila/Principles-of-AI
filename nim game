@@ -1,0 +1,33 @@
+python
+def nim_game():
+    # Initialize the heaps
+    heaps = [3, 4, 5]
+    # Initialize the current player
+    current_player = 1
+    # Game loop
+    while True:
+        # Print the current state of the heaps
+        print("Current state of the heaps:", heaps)
+        # Check if the game is over
+        if sum(heaps) == 0:
+            print("Player", current_player, "wins!")
+            break
+        # Get the player's move
+        while True:
+            heap_index = int(input("Player " + str(current_player) + ", choose a heap (0-" + str(len(heaps) - 1) + "): "))
+            if heap_index >= 0 and heap_index < len(heaps) and heaps[heap_index] > 0:
+                break
+            else:
+                print("Invalid move! Try again.")
+        while True:
+            num_objects = int(input("Player " + str(current_player) + ", choose the number of objects to remove: "))
+            if num_objects > 0 and num_objects <= heaps[heap_index]:
+                break
+            else:
+                print("Invalid move! Try again.")
+        # Update the heaps
+        heaps[heap_index] -= num_objects
+        # Switch to the other player
+        current_player = 3 - current_player
+# Start the game
+nim_game()
